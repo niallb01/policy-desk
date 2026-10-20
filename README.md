@@ -30,6 +30,10 @@ Later steps find the closest passage for a question, then either answer from tha
 
 **Milestone 6 — find the nearest passages:** `search.js` turns one exam question into the same kind of number list, then compares it with every saved passage. The comparison is a plain score: 1 means the lists point the same way, and a lower score means they are less alike. It prints the three closest passages with the filename, the score, and the text. Run `node search.js --id refund-annual` and a refunds passage should be on top. Run `node search.js --id competitor-pricing` and the top passages should be off-topic or weakly related, because the pages never mention that competitor. Nothing has written an answer yet. This step only shows which passages a later answer would be allowed to use.
 
+**Milestone 7 — one grounded answer:** `answer_one.js` takes the same closest passages and sends only those, plus the question, to a chat model. `prompt.js` tells the model to use those passages, cite one, or say the pages do not contain the answer. `models.js` is the form the reply must fill in: a short answer, a yes/no refusal, and each citation’s file and passage id. Run `node answer_one.js --id refund-annual`. You should see a short answer, `refused: false`, and the refunds passage it used. The model never sees the rest of `docs/`.
+
+**Milestone 8 — score the set:** `score.js` marks one reply pass or fail against the key in `questions.json`. A question that should be refused passes only when the model refuses. Any other question passes only when the model answers, cites the right page, and includes the required fact. `answer.js` answers every question (or one, with `--id`) and prints a line each plus `N/M passed`. Run `node answer.js --id competitor-pricing` and that question should refuse. Run `node answer.js` for the full score. The product is that score. A fail is a bad retrieval or a model that talked past the passages.
+
 ## Secrets
 
 This repository is public. API keys stay in a local `.env` file, which git ignores.
