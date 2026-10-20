@@ -26,6 +26,8 @@ Later steps find the closest passage for a question, then either answer from tha
 
 **Milestone 4 — chunk the text:** `chunk.js` splits each page on its headings into short passages and prints each passage’s id, source file, and text. Run `node chunk.js` for every page, or `node chunk.js --file refunds.md` for one file. Search later points at one of these passages. A citation is one passage, not a whole file.
 
+**Milestone 5 — turn passages into number lists:** `embed.js` sends each passage to the embeddings API and saves `embeddings.json`. Each row is the passage id, the source file, the text, and a list of numbers. Run `npm install`, put `OPENAI_API_KEY` in `.env`, then `node embed.js`. You should see the saved file, how many passages were embedded, and the length of one number list. Similar passages get similar lists. This call is paid once; later steps read the file.
+
 ## Secrets
 
 This repository is public. API keys stay in a local `.env` file, which git ignores.

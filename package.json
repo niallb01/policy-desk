@@ -1,0 +1,9 @@
+{
+  "name": "policy-desk",
+  "private": true,
+  "description": "Answer support questions only from Northline policy pages.",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "openai": "^4.77.0"
+  }
+}

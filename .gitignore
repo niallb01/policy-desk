@@ -3,5 +3,5 @@
 .env.local
 .env.*.local
 
-# Dependencies (added in a later milestone)
+# Installed packages
 node_modules/
