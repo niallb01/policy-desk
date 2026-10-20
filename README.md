@@ -20,9 +20,11 @@ Five short policy pages:
 | `docs/escalation.md` | When a ticket goes to engineering |
 | `docs/auth-403-runbook.md` | What to do when many users get HTTP 403 after a release |
 
-Later steps turn those pages into short passages, find the closest passage for a question, and either answer from that passage or refuse. The exam questions are written before the model runs, so the model does not decide what “correct” means.
+Later steps find the closest passage for a question, then either answer from that passage or refuse. The exam questions are written before the model runs, so the model does not decide what “correct” means.
 
 **Milestone 3 — load the files:** `load_docs.js` reads every markdown file in `docs/` from disk and prints each filename with the first non-empty line as a preview, so you can see exactly what text the program has before any search or AI step. Run `node load_docs.js`; you should see all five policy pages listed with their title lines. Nothing is embedded or sent to an API yet—the step only proves the raw policy material is reachable as plain text.
+
+**Milestone 4 — chunk the text:** `chunk.js` splits each page on its headings into short passages and prints each passage’s id, source file, and text. Run `node chunk.js` for every page, or `node chunk.js --file refunds.md` for one file. Search later points at one of these passages. A citation is one passage, not a whole file.
 
 ## Secrets
 
