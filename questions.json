@@ -1,0 +1,74 @@
+[
+  {
+    "id": "refund-annual",
+    "question": "A customer was charged for an annual plan 12 days ago and wants the money back. Can we refund it?",
+    "expected": {
+      "should_refuse": false,
+      "source_file": "docs/refunds.md",
+      "must_mention": "30 days"
+    }
+  },
+  {
+    "id": "starter-price",
+    "question": "How much does the Starter plan cost each month?",
+    "expected": {
+      "should_refuse": false,
+      "source_file": "docs/plans-and-sla.md",
+      "must_mention": "£49"
+    }
+  },
+  {
+    "id": "service-credit",
+    "question": "A month missed the uptime target. How much service credit can the customer request?",
+    "expected": {
+      "should_refuse": false,
+      "source_file": "docs/plans-and-sla.md",
+      "must_mention": "10%"
+    }
+  },
+  {
+    "id": "failed-payment",
+    "question": "A payment failed. When does the account become read-only?",
+    "expected": {
+      "should_refuse": false,
+      "source_file": "docs/billing.md",
+      "must_mention": "day 7"
+    }
+  },
+  {
+    "id": "escalate-signin",
+    "question": "One user cannot sign in. Should we escalate that ticket to engineering?",
+    "expected": {
+      "should_refuse": false,
+      "source_file": "docs/escalation.md",
+      "must_mention": "single user"
+    }
+  },
+  {
+    "id": "auth-clock-skew",
+    "question": "Many users are getting HTTP 403 right after a release. The auth version matches the release notes and tokens were not rotated. What skew makes valid tokens look expired?",
+    "expected": {
+      "should_refuse": false,
+      "source_file": "docs/auth-403-runbook.md",
+      "must_mention": "60 seconds"
+    }
+  },
+  {
+    "id": "competitor-pricing",
+    "question": "What does Harborstack charge for a plan similar to Growth?",
+    "expected": {
+      "should_refuse": true,
+      "source_file": null,
+      "must_mention": null
+    }
+  },
+  {
+    "id": "free-trial",
+    "question": "Does Northline offer a 14-day free trial on the Growth plan?",
+    "expected": {
+      "should_refuse": true,
+      "source_file": null,
+      "must_mention": null
+    }
+  }
+]
