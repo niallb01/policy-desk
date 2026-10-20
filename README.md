@@ -28,6 +28,8 @@ Later steps find the closest passage for a question, then either answer from tha
 
 **Milestone 5 — turn passages into number lists:** `embed.js` sends each passage to the embeddings API and saves `embeddings.json`. Each row is the passage id, the source file, the text, and a list of numbers. Run `npm install`, put `OPENAI_API_KEY` in `.env`, then `node embed.js`. You should see the saved file, how many passages were embedded, and the length of one number list. Similar passages get similar lists. This call is paid once; later steps read the file.
 
+**Milestone 6 — find the nearest passages:** `search.js` turns one exam question into the same kind of number list, then compares it with every saved passage. The comparison is a plain score: 1 means the lists point the same way, and a lower score means they are less alike. It prints the three closest passages with the filename, the score, and the text. Run `node search.js --id refund-annual` and a refunds passage should be on top. Run `node search.js --id competitor-pricing` and the top passages should be off-topic or weakly related, because the pages never mention that competitor. Nothing has written an answer yet. This step only shows which passages a later answer would be allowed to use.
+
 ## Secrets
 
 This repository is public. API keys stay in a local `.env` file, which git ignores.
