@@ -22,6 +22,8 @@ Five short policy pages:
 
 Later steps turn those pages into short passages, find the closest passage for a question, and either answer from that passage or refuse. The exam questions are written before the model runs, so the model does not decide what “correct” means.
 
+**Milestone 3 — load the files:** `load_docs.js` reads every markdown file in `docs/` from disk and prints each filename with the first non-empty line as a preview, so you can see exactly what text the program has before any search or AI step. Run `node load_docs.js`; you should see all five policy pages listed with their title lines. Nothing is embedded or sent to an API yet—the step only proves the raw policy material is reachable as plain text.
+
 ## Secrets
 
 This repository is public. API keys stay in a local `.env` file, which git ignores.
